@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  name: MyString
+  slug: MyString
+  homepage: MyString
+  download_url: MyString
+  version: MyString
+  tested: MyString
+  last_updated: MyString
+  upgrade_notice: MyString
+  author: MyString
+  author_homepage: MyString
+  sections: 
+  rating: 1
+  num_ratings: 1
+  downloaded: 1
+two:
+  id: 2
+  name: MyString
+  slug: MyString
+  homepage: MyString
+  download_url: MyString
+  version: MyString
+  tested: MyString
+  last_updated: MyString
+  upgrade_notice: MyString
+  author: MyString
+  author_homepage: MyString
+  sections: 
+  rating: 1
+  num_ratings: 1
+  downloaded: 1

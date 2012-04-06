@@ -1,0 +1,7 @@
+# English strings go here for Rails i18n
+en:
+  field_cached_type: "Type"
+  field_cached_meta_file: "Metadata File"
+  field_slug: "Slug"
+  field_public: "Public"
+  field_token: "Token"

@@ -1,0 +1,10 @@
+<li>
+  <%= token.identifier %> : <%= token.token %> 
+  
+  <% if token.active %>
+	<%= link_to("Deactivate", {:token_action => :deactivate, :token_id => token.id}) %>
+  <% else %>
+	<%= link_to("Activate", {:token_action => :activate, :token_id => token.id}) %>
+	<%= link_to("Delete", {:token_action => :delete, :token_id => token.id}) %>
+  <% end %>
+</li>

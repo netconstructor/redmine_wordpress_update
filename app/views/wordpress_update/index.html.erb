@@ -1,0 +1,58 @@
+<% content_for :meta do %>
+	<meta name="csrf-token" content="<%= form_authenticity_token %>" />
+	<meta name="csrf-param" content="authenticity_token" />
+	<% unless @resource.public %>
+		jQuery('#tokens').append('<%= escape_javascript(render :partial => "token", :locals => { :token => @token }) %>');
+	<% end %>
+<% end %>
+
+<h2>Wordpress Update</h2>
+<% html_title "Wordpress Update" %>
+
+<% if @resource.errors.any? %>
+  <ul>
+    <% @resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% labelled_form_for :resource, @resource, :method => :post do |f| %>
+  <div class="box tabular">
+  <p><%= f.text_field :cached_type, :disabled => 'disabled' %></p>
+  <p><%= f.text_field :cached_meta_file, :disabled => 'disabled' %></p>
+  <p><%= f.text_field :slug %></p>
+  <p><%= f.select :public, options_for_select([true, false], @resource.public) %></p>
+  <p><%= f.submit "Update" %></p>
+  </div>
+<% end %>
+
+<% unless @resource.public %>
+	<h3>Download Tokens</h3>
+	<p>Download tokens can be assigned to clients to secure file downloads. They should be treated like passwords.</p>
+
+	<h4>Current Tokens: </h4>
+	<% if @tokens.count > 0 %>
+	<ul id="tokens">
+	  <%= render :partial => "token", :collection => @tokens %>
+	</ul>
+	<% else %>
+		<p>No tokens.</p>
+	<% end %>
+	
+	<% if @token.errors.any? %>
+	  <ul>
+		<% @token.errors.full_messages.each do |msg| %>
+		  <li><%= msg %></li>
+		<% end %>
+	  </ul>
+	<% end %>
+	
+	<% labelled_form_for :download_token, @token, :method => :post do |f| %>
+	  <div class="box tabular">
+	  <p><%= f.text_field :identifier %></p>
+	  <p><%= f.text_field :token %></p>
+	  <p><%= f.submit "Add" %></p>
+	  </div>
+	<% end %>	
+<% end %>
